@@ -262,20 +262,22 @@ class PreprocessingPipeline:
 
     def load_raw_data_and_preprocess(
             self,
-            mat_path: str,
+            comp_mat_path: str,
+            labels_mat_path: str,
             data_key: str,
             dg_key: str,
     ):
         """
         Loading the raw data and applying the processing algorithm
         """
-        data = scipy.io.loadmat(mat_path)
+        comp_data = scipy.io.loadmat(comp_mat_path)
+        labels = scipy.io.loadmat(labels_mat_path)
 
         interpolated_finger_flex = self.interpolate_fingerflex(
-            finger_flex=self.reshape_column_ecog_data(data[dg_key].astype('float64'))
+            finger_flex=self.reshape_column_ecog_data(labels[dg_key].astype('float64'))
         )
 
-        reshaped_train_data = self.reshape_column_ecog_data(data[data_key].astype('float64'))
+        reshaped_train_data = self.reshape_column_ecog_data(comp_data[data_key].astype('float64'))
         normalized_train_data, (means, stds) = self.normalize(reshaped_train_data, return_values=True)
         filtered_train_data = self.filter_ecog_data(normalized_train_data)
         spectrogramms = self.compute_spectrogramms(filtered_train_data)
@@ -285,37 +287,43 @@ class PreprocessingPipeline:
 
     def load_raw_tr_data_and_preprocess(
             self,
-            mat_path: Optional[str] = None,
+            comp_mat_path: Optional[str] = None,
+            labels_mat_path: Optional[str] = None,
             data_key: Optional[str] = None,
             dg_key: Optional[str] = None,
     ):
         """
         Loading the raw data and applying the processing algorithm
         """
-        if mat_path is None:
-            mat_path = os.path.join(self.raw_data_dir, self.TR_DEFAULT_MAT)
+        if comp_mat_path is None:
+            comp_mat_path = os.path.join(self.raw_data_dir, self.TR_DEFAULT_MAT)
+        if labels_mat_path is None:
+            labels_mat_path = os.path.join(self.raw_data_dir, self.TR_DEFAULT_MAT)
         if data_key is None:
             data_key = self.TR_DATA_KEY
         if dg_key is None:
             dg_key = self.TR_DG_KEY
-        return self.load_raw_data_and_preprocess(mat_path, data_key, dg_key)
+        return self.load_raw_data_and_preprocess(comp_mat_path, labels_mat_path, data_key, dg_key)
 
     def load_raw_test_data_and_preprocess(
             self,
-            mat_path: Optional[str] = None,
+            comp_mat_path: Optional[str] = None,
+            labels_mat_path: Optional[str] = None,
             data_key: Optional[str] = None,
             dg_key: Optional[str] = None,
     ):
         """
         Loading the raw data and applying the processing algorithm
         """
-        if mat_path is None:
-            mat_path = os.path.join(self.raw_data_dir, self.TEST_DEFAULT_MAT)
+        if comp_mat_path is None:
+            comp_mat_path = os.path.join(self.raw_data_dir, self.TR_DEFAULT_MAT)
+        if labels_mat_path is None:
+            labels_mat_path = os.path.join(self.raw_data_dir, self.TEST_DEFAULT_MAT)
         if data_key is None:
             data_key = self.TEST_DATA_KEY
         if dg_key is None:
             dg_key = self.TEST_DG_KEY
-        return self.load_raw_data_and_preprocess(mat_path, data_key, dg_key)
+        return self.load_raw_data_and_preprocess(comp_mat_path, labels_mat_path, data_key, dg_key)
 
     def download_raw_data(self, url: str = None, save_dir: str = None, **kwargs):
         """
@@ -334,14 +342,15 @@ class PreprocessingPipeline:
         with open(os.path.join(save_dir, "raw_data.zip"), 'wb') as f:
             shutil.copyfileobj(r.raw, f)
         with zipfile.ZipFile(os.path.join(save_dir, "raw_data.zip"), 'r') as zip_ref:
-            zip_ref.extractall(save_dir)
+            zip_ref.extractall(os.path.dirname(save_dir))
         self.log_func(f"Raw data saved to {save_dir}")
 
     def maybe_download_raw_data(self, url: str = None, save_dir: str = None, **kwargs):
         """
         Downloading the raw data if it is not already downloaded
         """
-        if not os.path.exists(os.path.join(self.raw_data_dir, self.TR_DEFAULT_MAT)):
+        save_dir = save_dir or self.raw_data_dir
+        if not os.path.exists(os.path.join(save_dir, self.TR_DEFAULT_MAT)):
             self.download_raw_data(url, save_dir, **kwargs)
 
     def run(self, **kwargs):
@@ -427,7 +436,7 @@ class PreprocessingPipeline:
 
         self.fingerflex_train_data = scaler.transform(self.fingerflex_train_data.T).T
         self.fingerflex_test_data = scaler.transform(self.fingerflex_test_data.T).T
-        return self.save(**kwargs)
+        return self
 
     def ecog_data_scaling(self, **kwargs):
         from sklearn.preprocessing import RobustScaler
@@ -441,4 +450,4 @@ class PreprocessingPipeline:
         self.ecog_test_data = transformer.transform(
             self.ecog_test_data.T.reshape(-1, self.WAVELET_NUM * self.CHANNELS_NUM)
         ).reshape(-1, self.WAVELET_NUM, self.CHANNELS_NUM).T
-        return self.save(**kwargs)
+        return self
