@@ -15,8 +15,10 @@ class EcogFingerflexDataset(Dataset):
         """
         paths should point to .npy files
         """
-        self.ecog_data, self.fingerflex_data = np.load(path_to_ecog_data).astype('float32'), \
-            np.load(path_to_fingerflex_data).astype('float32')
+        self.ecog_data = np.load(path_to_ecog_data).astype('float32')
+        self.fingerflex_data = np.load(path_to_fingerflex_data).astype('float32')
+        print("Ecog shape: ", self.ecog_data.shape)
+        print("Fingerflex shape: ", self.fingerflex_data.shape)
 
         self.duration = self.ecog_data.shape[2]
         self.sample_len = sample_len  # sample size
