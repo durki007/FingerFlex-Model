@@ -314,3 +314,4 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,visualstudiocode,venv,python,jupyternotebooks
 
 data
+/lightning_logs
