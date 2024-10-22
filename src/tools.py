@@ -59,7 +59,7 @@ class ValidationCallback(Callback):
 
             X_test = self.val_x[:bound]
             y_test = self.val_y[:bound]
-            x_batch = torch.from_numpy(X_test).float().to("cuda:3")
+            x_batch = torch.from_numpy(X_test).float().to("cuda:0")
 
             x_batch = x_batch.T
 
@@ -92,8 +92,9 @@ class ValidationCallback(Callback):
 
             corr_mean = np.mean(corrs)
             pl_module.log("corr_mean_val", corr_mean, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+            print("Validation epoch end, corr_mean_val ", corr_mean)
             # wandb.log({"corr_mean_val" : corr_mean })
-            wandb.log({f"plots": fig})  # Logging charts
+            # wandb.log({f"plots": fig})  # Logging charts
 
 
 class TestCallback:
@@ -116,9 +117,9 @@ class TestCallback:
 
             X_test = self.val_x[:bound]
             y_test = self.val_y[:bound]
-            x_batch = torch.from_numpy(X_test).float()  # .to("cuda:3")
+            x_batch = torch.from_numpy(X_test).float().to("cuda:0")
 
-            x_batch = x_batch.T
+            x_batch = x_batch.T.to("cuda:0")
 
             x_batch = torch.unsqueeze(x_batch, 0)
 

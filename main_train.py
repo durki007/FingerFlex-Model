@@ -3,9 +3,12 @@ import sys
 
 import torch
 import wandb
+import pathlib
+import numpy as np
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
+from pytorch_lightning.loggers import CSVLogger
 from pytorch_model_summary import summary
 
 from src.dataset import EcogFingerflexDatamodule
@@ -16,7 +19,7 @@ from src.tools import ValidationCallback
 def parse_args():
     parser = argparse.ArgumentParser(description='Train the model')
     parser.add_argument(
-        '--channels_num', type=int, default=64,
+        '--channels_num', type=int, default=62,
         help='Number of channels in the ECoG data'
     )
     parser.add_argument(
@@ -46,6 +49,9 @@ def main():
     finger_num = args.finger_num
     sample_len = args.sample_len
     device = args.device
+    
+    # Torch optimization for RTX 4070 SUPER
+    torch.set_float32_matmul_precision('medium')
 
     # Model hyperparameters
     hp_autoencoder = dict(
@@ -70,29 +76,39 @@ def main():
         torch.zeros(4, channels_num, wavelet_num, sample_len).to(device),
         show_input=False
     )
+    
+    SAVE_PATH = f"{pathlib.Path().resolve()}/data/preprocessed"
+
+    def load_data(ecog_data_path, fingerflex_data_path):
+        ecog_data = np.load(ecog_data_path)
+        fingerflex_data = np.load(fingerflex_data_path)
+        return ecog_data, fingerflex_data
+
+    # Validation data
+    ecog_data_val, fingerflex_data_val = load_data(f"{SAVE_PATH}/val/ecog_data.npy", f"{SAVE_PATH}/val/fingerflex_data.npy")
 
     # wandb.init(project="BCI_comp")
     # wandb_logger = WandbLogger()
+    csv_logger = CSVLogger("logs", name="ecog_fingerflex")
 
     checkpoint_callback = ModelCheckpoint(
         save_top_k=2,
-        # monitor="corr_mean_val",
-        monitor="corr_mean",
+        monitor="corr_mean_val",
+        # monitor="corr_mean",
         mode="max",
         dirpath="checkpoints",
         filename="model-{epoch:02d}-{corr_mean_val}",
     )
 
     trainer = Trainer(
-        # gpus=[3],
         max_epochs=20,
-        # logger=wandb_logger,
+        logger=csv_logger,
         callbacks=[
-            # ValidationCallback(
-            #     ecog_data_val,
-            #     fingerflex_data_val,
-            #     finger_num
-            # ),
+            ValidationCallback(
+                ecog_data_val,
+                fingerflex_data_val,
+                finger_num
+            ),
             checkpoint_callback,
         ]
     )

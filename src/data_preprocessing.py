@@ -202,7 +202,7 @@ class PreprocessingPipeline:
         self.log_func("Computing wavelets...")
         spectrogramms = mne.time_frequency.tfr_array_morlet(
             multichannel_signal.reshape(1, num_of_channels, -1),
-            sfreq=fs, freqs=freqs, output=output_type, verbose=10, n_jobs=6
+            sfreq=fs, freqs=freqs, output=output_type, verbose=10, n_jobs=6, zero_mean=False
         )[0]
 
         self.log_func("Wavelet spectrogramm computed.")
@@ -395,6 +395,8 @@ class PreprocessingPipeline:
         fingerflex_train_path = f"{save_dir}/train/fingerflex_data.npy"
         ecog_test_path = f"{save_dir}/test/ecog_data.npy"
         fingerflex_test_path = f"{save_dir}/test/fingerflex_data.npy"
+        ecog_val_path = f"{save_dir}/val/ecog_data.npy"
+        fingerflex_val_path = f"{save_dir}/val/fingerflex_data.npy"
 
         if reshape:
             self.ecog_train_data = self.ecog_train_data.reshape(self.CHANNELS_NUM * self.WAVELET_NUM, -1)
@@ -404,6 +406,8 @@ class PreprocessingPipeline:
         np.save(fingerflex_train_path, self.fingerflex_train_data)
         np.save(ecog_test_path, self.ecog_test_data)
         np.save(fingerflex_test_path, self.fingerflex_test_data)
+        np.save(ecog_val_path, self.ecog_test_data)
+        np.save(fingerflex_val_path, self.fingerflex_test_data)
 
         self.log_func(f"Preprocessed data saved to {save_dir}")
 
