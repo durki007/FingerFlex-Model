@@ -112,7 +112,7 @@ def main():
             checkpoint_callback,
         ]
     )
-    trainer.fit(lightning_wrapper, dm)
+    trainer.fit(lightning_wrapper, dm, ckpt_path="checkpoints\model-epoch=16-corr_mean_val=0.6680787205696106.ckpt")
     # wandb.finish()
 
 
