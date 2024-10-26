@@ -13,6 +13,7 @@ class BaseEcogFingerflexModel(pl.LightningModule):
 
     def __init__(self, model):
         super().__init__()
+        self.save_hyperparameters()
         self.model = model  # Pytorch model
         self.lr = 8.42e-5
 
