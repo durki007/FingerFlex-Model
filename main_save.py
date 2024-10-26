@@ -1,4 +1,5 @@
-from src.models import BaseEcogFingerflexModel, AutoEncoder1D 
+from src.models import BaseEcogFingerflexModel 
+from src.raw_models import AutoEncoder1D
 from src.tools import TestCallback
 import torch
 

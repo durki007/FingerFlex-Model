@@ -12,7 +12,8 @@ from pytorch_lightning.loggers import CSVLogger
 from pytorch_model_summary import summary
 
 from src.dataset import EcogFingerflexDatamodule
-from src.models import AutoEncoder1D, BaseEcogFingerflexModel
+from src.models import BaseEcogFingerflexModel
+from src.raw_models import AutoEncoder1D
 from src.tools import ValidationCallback
 
 
