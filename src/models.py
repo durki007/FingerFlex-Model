@@ -2,7 +2,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from raw_models import AutoEncoder1D
+from .raw_models import AutoEncoder1D
 
 from .tools import correlation_metric
 

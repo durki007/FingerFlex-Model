@@ -1,0 +1,12 @@
+{
+    "lib": "libvart-dpu-runner.so",
+    "filename": "compiled.xmodel.xmodel",
+    "kernel": [
+        "subgraph_AutoEncoder1D__AutoEncoder1D_ConvBlock_downsample_blocks__ModuleList_4__MaxPool2d_downsample__3476_fix",
+        "subgraph_AutoEncoder1D__AutoEncoder1D_ConvBlock_downsample_blocks__ModuleList_3__MaxPool2d_downsample__3417_fix",
+        "subgraph_AutoEncoder1D__AutoEncoder1D_ConvBlock_downsample_blocks__ModuleList_0__MaxPool2d_downsample__3240_fix",
+        "subgraph_AutoEncoder1D__AutoEncoder1D_ConvBlock_downsample_blocks__ModuleList_1__MaxPool2d_downsample__3299_fix",
+        "subgraph_AutoEncoder1D__AutoEncoder1D_ConvBlock_downsample_blocks__ModuleList_2__MaxPool2d_downsample__3358_fix"
+    ],
+    "target": "DPUCZDX8G_ISA1_B4096"
+}

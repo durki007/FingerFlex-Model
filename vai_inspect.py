@@ -13,8 +13,12 @@ def parse_args():
         help='Path to the model'
     )
     parser.add_argument(
-        '--target', '-t', type=str, default="DPUCAHX8L_ISA0_SP",
+        '--target', '-t', type=str, default="DPUCZDX8G_ISA1_B4096",
         help='Target platform (DPU)'
+    )
+    parser.add_argument(
+        '--output', '-o', type=str, default="vai_inspect_results.txt",
+        help='Output file'
     )
     return parser.parse_args()
 

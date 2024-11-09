@@ -103,10 +103,10 @@ class EcogFingerflexDatamodule(pl.LightningDataModule):
             )
 
     def train_dataloader(self):
-        return DataLoader(self.train, batch_size=self.batch_size, num_workers=15, shuffle=True, persistent_workers=True)
+        return DataLoader(self.train, batch_size=self.batch_size, shuffle=True )
 
     def val_dataloader(self):
-        return DataLoader(self.val, batch_size=self.batch_size, num_workers=15, persistent_workers=True)
+        return DataLoader(self.val, batch_size=self.batch_size )
 
     def test_dataloader(self):
         return DataLoader(self.test, batch_size=self.batch_size)

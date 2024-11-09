@@ -3,9 +3,9 @@ from src.raw_models import AutoEncoder1D
 from src.tools import TestCallback
 import torch
 
-model_to_test = "checkpoints\model-epoch=16-corr_mean_val=0.6680787205696106.ckpt"
+model_to_test = "checkpoints\model-epoch=01-corr_mean_val=0.6366250514984131.ckpt"
 save_dir ="vai_models/trained/"
-save_name = "model-epoch=16-corr_mean_val=0.6680787205696106.pth"
+save_name = "2d.pth"
 save_path = save_dir + save_name
 
 

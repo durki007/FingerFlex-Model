@@ -18,7 +18,7 @@ class ConvBlock(nn.Module):
 
         # use it instead stride.
 
-        self.conv1d = nn.Conv1d(in_channels, out_channels,
+        self.conv1d = nn.Conv2d(in_channels, out_channels,
                                 kernel_size=kernel_size,
                                 bias=False,
                                 padding='same')
@@ -27,14 +27,16 @@ class ConvBlock(nn.Module):
         self.activation = nn.GELU()
         self.drop = nn.Dropout(p=p_conv_drop)
 
-        self.downsample = nn.MaxPool1d(kernel_size=stride, stride=stride)
+        self.downsample = nn.MaxPool2d(kernel_size=stride, stride=stride)
 
         self.stride = stride
         self.in_channels = in_channels
         self.out_channels = out_channels
 
     def forward(self, x):
+        x = torch.unsqueeze(x, -1)
         x = self.conv1d(x)
+        x = torch.squeeze(x, -1)
 
         # norm by last axis.
         x = torch.transpose(x, -2, -1)
@@ -45,7 +47,9 @@ class ConvBlock(nn.Module):
 
         x = self.drop(x)
 
+        x = torch.unsqueeze(x, -1)
         x = self.downsample(x)
+        x = torch.squeeze(x, -1)
 
         return x
 
@@ -94,9 +98,9 @@ class AutoEncoder1D(nn.Module):
         # Encoder part
         self.downsample_blocks = nn.ModuleList([ConvBlock(channels[i],
                                                           channels[i + 1],
-                                                          kernel_sizes[i],
-                                                          stride=strides[i],
-                                                          dilation=dilation[i]) for i in range(self.model_depth)])
+                                                          (kernel_sizes[i], 1),
+                                                          stride=(strides[i], 1),
+                                                          dilation=(dilation[i], 1)) for i in range(self.model_depth)])
 
         channels = [ch for ch in channels[:-1]] + channels[-1:]  # channels
 
@@ -105,10 +109,10 @@ class AutoEncoder1D(nn.Module):
                                                           in_channels=channels[i + 1] if i == self.model_depth - 1 else
                                                           channels[i + 1] * 2,
                                                           out_channels=channels[i],
-                                                          kernel_size=kernel_sizes[i]) for i in
+                                                          kernel_size=(kernel_sizes[i], 1)) for i in
                                               range(self.model_depth - 1, -1, -1)])
 
-        self.conv1x1_one = nn.Conv1d(channels[0] * 2, self.n_channels_out, kernel_size=1,
+        self.conv1x1_one = nn.Conv2d(channels[0] * 2, self.n_channels_out, kernel_size=(1,1),
                                      padding='same')  # final 1x1 conv
 
     def forward(self, x):
@@ -128,6 +132,10 @@ class AutoEncoder1D(nn.Module):
             x = torch.cat((x, skip_connection[-1 - i]),  # skip connections
                           dim=1)
 
+        x = torch.unsqueeze(x, -1)
         x = self.conv1x1_one(x)
-
+        x = torch.squeeze(x, -1)
         return x
+        
+        
+        
