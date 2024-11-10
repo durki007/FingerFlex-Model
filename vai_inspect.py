@@ -5,6 +5,7 @@ import sys
 
 # Only works with Vitis AI
 from pytorch_nndct.apis import Inspector
+import xir
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Inspect the model using Vitis AI')

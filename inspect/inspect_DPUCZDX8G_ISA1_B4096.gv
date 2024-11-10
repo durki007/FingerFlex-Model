@@ -1,0 +1,736 @@
+digraph AutoEncoder1D {
+	input_0 [label="type:nndct_input
+name:AutoEncoder1D::input_0
+assigned device:user
+out shape:[[4, 62, 40, 256]]" color=black]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.5" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.5
+assigned device:cpu
+out shape:[[4, 2480, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/Conv2d[conv1d]/ret.7" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/Conv2d[conv1d]/ret.7
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.9" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.9
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.11" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.11
+assigned device:cpu
+out shape:[[4, 256, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/LayerNorm[norm]/ret.13" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/LayerNorm[norm]/ret.13
+assigned device:cpu
+out shape:[[4, 256, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.15" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.15
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/GELU[activation]/ret.17" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/GELU[activation]/ret.17
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19_swim_transpose_0" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19_swim_transpose_0
+assigned device:cpu
+out shape:[[4, 256, 1, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181
+assigned device:dpu
+out shape:[[4, 256, 1, 32]]" color=blue]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181_sink_transpose_0" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181_sink_transpose_0
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.21" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[spatial_reduce]/ret.21
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.23" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.23
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/Conv2d[conv1d]/ret.25" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/Conv2d[conv1d]/ret.25
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.27" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.27
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.29" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.29
+assigned device:cpu
+out shape:[[4, 256, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/LayerNorm[norm]/ret.31" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/LayerNorm[norm]/ret.31
+assigned device:cpu
+out shape:[[4, 256, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.33" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.33
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/GELU[activation]/ret.35" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/GELU[activation]/ret.35
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37
+assigned device:cpu
+out shape:[[4, 32, 256, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37_swim_transpose_1" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37_swim_transpose_1
+assigned device:cpu
+out shape:[[4, 256, 1, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240
+assigned device:dpu
+out shape:[[4, 128, 1, 32]]" color=blue]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240_sink_transpose_1" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240_sink_transpose_1
+assigned device:cpu
+out shape:[[4, 32, 128, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.39" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.39
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.41" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.41
+assigned device:cpu
+out shape:[[4, 32, 128, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/Conv2d[conv1d]/ret.43" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/Conv2d[conv1d]/ret.43
+assigned device:cpu
+out shape:[[4, 64, 128, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.45" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.45
+assigned device:cpu
+out shape:[[4, 64, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.47" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.47
+assigned device:cpu
+out shape:[[4, 128, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/LayerNorm[norm]/ret.49" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/LayerNorm[norm]/ret.49
+assigned device:cpu
+out shape:[[4, 128, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.51" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.51
+assigned device:cpu
+out shape:[[4, 64, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/GELU[activation]/ret.53" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/GELU[activation]/ret.53
+assigned device:cpu
+out shape:[[4, 64, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55
+assigned device:cpu
+out shape:[[4, 64, 128, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55_swim_transpose_2" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55_swim_transpose_2
+assigned device:cpu
+out shape:[[4, 128, 1, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299
+assigned device:dpu
+out shape:[[4, 64, 1, 64]]" color=blue]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299_sink_transpose_2" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299_sink_transpose_2
+assigned device:cpu
+out shape:[[4, 64, 64, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.57" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.57
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.59" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.59
+assigned device:cpu
+out shape:[[4, 64, 64, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/Conv2d[conv1d]/ret.61" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/Conv2d[conv1d]/ret.61
+assigned device:cpu
+out shape:[[4, 64, 64, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.63" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.63
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.65" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.65
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/LayerNorm[norm]/ret.67" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/LayerNorm[norm]/ret.67
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.69" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.69
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/GELU[activation]/ret.71" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/GELU[activation]/ret.71
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73
+assigned device:cpu
+out shape:[[4, 64, 64, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73_swim_transpose_3" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73_swim_transpose_3
+assigned device:cpu
+out shape:[[4, 64, 1, 64]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358
+assigned device:dpu
+out shape:[[4, 32, 1, 64]]" color=blue]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358_sink_transpose_3" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358_sink_transpose_3
+assigned device:cpu
+out shape:[[4, 64, 32, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.75" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.75
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.77" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.77
+assigned device:cpu
+out shape:[[4, 64, 32, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/Conv2d[conv1d]/ret.79" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/Conv2d[conv1d]/ret.79
+assigned device:cpu
+out shape:[[4, 128, 32, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.81" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.81
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.83" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.83
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/LayerNorm[norm]/ret.85" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/LayerNorm[norm]/ret.85
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.87" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.87
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/GELU[activation]/ret.89" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/GELU[activation]/ret.89
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91
+assigned device:cpu
+out shape:[[4, 128, 32, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91_swim_transpose_4" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91_swim_transpose_4
+assigned device:cpu
+out shape:[[4, 32, 1, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417
+assigned device:dpu
+out shape:[[4, 16, 1, 128]]" color=blue]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417_sink_transpose_4" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417_sink_transpose_4
+assigned device:cpu
+out shape:[[4, 128, 16, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.93" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.93
+assigned device:cpu
+out shape:[[4, 128, 16]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.95" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.95
+assigned device:cpu
+out shape:[[4, 128, 16, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/Conv2d[conv1d]/ret.97" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/Conv2d[conv1d]/ret.97
+assigned device:cpu
+out shape:[[4, 128, 16, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.99" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.99
+assigned device:cpu
+out shape:[[4, 128, 16]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.101" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.101
+assigned device:cpu
+out shape:[[4, 16, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/LayerNorm[norm]/ret.103" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/LayerNorm[norm]/ret.103
+assigned device:cpu
+out shape:[[4, 16, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.105" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.105
+assigned device:cpu
+out shape:[[4, 128, 16]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/GELU[activation]/ret.107" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/GELU[activation]/ret.107
+assigned device:cpu
+out shape:[[4, 128, 16]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109
+assigned device:cpu
+out shape:[[4, 128, 16, 1]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109_swim_transpose_5" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109_swim_transpose_5
+assigned device:cpu
+out shape:[[4, 16, 1, 128]]" color=red]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476
+assigned device:dpu
+out shape:[[4, 8, 1, 128]]" color=blue]
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476_sink_transpose_5" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476_sink_transpose_5
+assigned device:cpu
+out shape:[[4, 128, 8, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.113" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.113
+assigned device:cpu
+out shape:[[4, 128, 8, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.115" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.115
+assigned device:cpu
+out shape:[[4, 128, 8, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.117" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.117
+assigned device:cpu
+out shape:[[4, 128, 8]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.119" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.119
+assigned device:cpu
+out shape:[[4, 8, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/LayerNorm[norm]/ret.121" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/LayerNorm[norm]/ret.121
+assigned device:cpu
+out shape:[[4, 8, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.123" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.123
+assigned device:cpu
+out shape:[[4, 128, 8]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/GELU[activation]/ret.125" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/GELU[activation]/ret.125
+assigned device:cpu
+out shape:[[4, 128, 8]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127
+assigned device:cpu
+out shape:[[4, 128, 8, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127_swim_transpose_6" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127_swim_transpose_6
+assigned device:cpu
+out shape:[[4, 8, 1, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535
+assigned device:dpu
+out shape:[[4, 8, 1, 128]]" color=blue]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535_sink_transpose_6" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535_sink_transpose_6
+assigned device:cpu
+out shape:[[4, 128, 8, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.129" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.129
+assigned device:cpu
+out shape:[[4, 128, 8]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/Upsample[upsample]/ret.131" [label="type:aten::upsample_linear1d
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/Upsample[upsample]/ret.131
+assigned device:cpu
+out shape:[[4, 128, 16]]" color=red]
+	"AutoEncoder1D/ret.133" [label="type:nndct_concat
+name:AutoEncoder1D::AutoEncoder1D/ret.133
+assigned device:cpu
+out shape:[[4, 256, 16]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.135" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.135
+assigned device:cpu
+out shape:[[4, 256, 16, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.137" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.137
+assigned device:cpu
+out shape:[[4, 64, 16, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.139" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.139
+assigned device:cpu
+out shape:[[4, 64, 16]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.141" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.141
+assigned device:cpu
+out shape:[[4, 16, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/LayerNorm[norm]/ret.143" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/LayerNorm[norm]/ret.143
+assigned device:cpu
+out shape:[[4, 16, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.145" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.145
+assigned device:cpu
+out shape:[[4, 64, 16]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/GELU[activation]/ret.147" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/GELU[activation]/ret.147
+assigned device:cpu
+out shape:[[4, 64, 16]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149
+assigned device:cpu
+out shape:[[4, 64, 16, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149_swim_transpose_7" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149_swim_transpose_7
+assigned device:cpu
+out shape:[[4, 16, 1, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604
+assigned device:dpu
+out shape:[[4, 16, 1, 64]]" color=blue]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604_sink_transpose_7" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604_sink_transpose_7
+assigned device:cpu
+out shape:[[4, 64, 16, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.151" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.151
+assigned device:cpu
+out shape:[[4, 64, 16]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/Upsample[upsample]/ret.153" [label="type:aten::upsample_linear1d
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/Upsample[upsample]/ret.153
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/ret.155" [label="type:nndct_concat
+name:AutoEncoder1D::AutoEncoder1D/ret.155
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.157" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.157
+assigned device:cpu
+out shape:[[4, 128, 32, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.159" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.159
+assigned device:cpu
+out shape:[[4, 64, 32, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.161" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.161
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.163" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.163
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/LayerNorm[norm]/ret.165" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/LayerNorm[norm]/ret.165
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.167" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.167
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/GELU[activation]/ret.169" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/GELU[activation]/ret.169
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171
+assigned device:cpu
+out shape:[[4, 64, 32, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171_swim_transpose_8" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171_swim_transpose_8
+assigned device:cpu
+out shape:[[4, 32, 1, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673
+assigned device:dpu
+out shape:[[4, 32, 1, 64]]" color=blue]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673_sink_transpose_8" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673_sink_transpose_8
+assigned device:cpu
+out shape:[[4, 64, 32, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.173" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.173
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/Upsample[upsample]/ret.175" [label="type:aten::upsample_linear1d
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/Upsample[upsample]/ret.175
+assigned device:cpu
+out shape:[[4, 64, 64]]" color=red]
+	"AutoEncoder1D/ret.177" [label="type:nndct_concat
+name:AutoEncoder1D::AutoEncoder1D/ret.177
+assigned device:cpu
+out shape:[[4, 128, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.179" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.179
+assigned device:cpu
+out shape:[[4, 128, 64, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.181" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.181
+assigned device:cpu
+out shape:[[4, 32, 64, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.183" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.183
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.185" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.185
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/LayerNorm[norm]/ret.187" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/LayerNorm[norm]/ret.187
+assigned device:cpu
+out shape:[[4, 64, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.189" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.189
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/GELU[activation]/ret.191" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/GELU[activation]/ret.191
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193
+assigned device:cpu
+out shape:[[4, 32, 64, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193_swim_transpose_9" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193_swim_transpose_9
+assigned device:cpu
+out shape:[[4, 64, 1, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742
+assigned device:dpu
+out shape:[[4, 64, 1, 32]]" color=blue]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742_sink_transpose_9" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742_sink_transpose_9
+assigned device:cpu
+out shape:[[4, 32, 64, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.195" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.195
+assigned device:cpu
+out shape:[[4, 32, 64]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/Upsample[upsample]/ret.197" [label="type:aten::upsample_linear1d
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/Upsample[upsample]/ret.197
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/ret.199" [label="type:nndct_concat
+name:AutoEncoder1D::AutoEncoder1D/ret.199
+assigned device:cpu
+out shape:[[4, 64, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.201" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.201
+assigned device:cpu
+out shape:[[4, 64, 128, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.203" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.203
+assigned device:cpu
+out shape:[[4, 32, 128, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.205" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.205
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.207" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.207
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/LayerNorm[norm]/ret.209" [label="type:nndct_layer_norm
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/LayerNorm[norm]/ret.209
+assigned device:cpu
+out shape:[[4, 128, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.211" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.211
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/GELU[activation]/ret.213" [label="type:nndct_GELU
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/GELU[activation]/ret.213
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215
+assigned device:cpu
+out shape:[[4, 32, 128, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215_swim_transpose_10" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215_swim_transpose_10
+assigned device:cpu
+out shape:[[4, 128, 1, 32]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811" [label="type:nndct_maxpool
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811
+assigned device:dpu
+out shape:[[4, 128, 1, 32]]" color=blue]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811_sink_transpose_10" [label="type:nndct_permute
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811_sink_transpose_10
+assigned device:cpu
+out shape:[[4, 32, 128, 1]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.217" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.217
+assigned device:cpu
+out shape:[[4, 32, 128]]" color=red]
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/Upsample[upsample]/ret.219" [label="type:aten::upsample_linear1d
+name:AutoEncoder1D::AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/Upsample[upsample]/ret.219
+assigned device:cpu
+out shape:[[4, 32, 256]]" color=red]
+	"AutoEncoder1D/ret.221" [label="type:nndct_concat
+name:AutoEncoder1D::AutoEncoder1D/ret.221
+assigned device:cpu
+out shape:[[4, 64, 256]]" color=red]
+	"AutoEncoder1D/ret.223" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ret.223
+assigned device:cpu
+out shape:[[4, 64, 256, 1]]" color=red]
+	"AutoEncoder1D/Conv2d[conv1x1_one]/ret.225" [label="type:aten::_convolution_mode
+name:AutoEncoder1D::AutoEncoder1D/Conv2d[conv1x1_one]/ret.225
+assigned device:cpu
+out shape:[[4, 5, 256, 1]]" color=red]
+	"AutoEncoder1D/ret" [label="type:nndct_reshape
+name:AutoEncoder1D::AutoEncoder1D/ret
+assigned device:cpu
+out shape:[[4, 5, 256]]" color=red]
+	return_0 [label="type:nndct_return
+name:AutoEncoder1D::return_0
+assigned device:user
+out shape:[]" color=black]
+	input_0 -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.5"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.5" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/Conv2d[conv1d]/ret.7"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/Conv2d[conv1d]/ret.7" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.9"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.9" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.11"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.11" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/LayerNorm[norm]/ret.13"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/LayerNorm[norm]/ret.13" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.15"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.15" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/GELU[activation]/ret.17"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/GELU[activation]/ret.17" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19_swim_transpose_0"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.19_swim_transpose_0" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181_sink_transpose_0"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181_sink_transpose_0" -> "AutoEncoder1D/ConvBlock[spatial_reduce]/ret.21"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/MaxPool2d[downsample]/3181_sink_transpose_0" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.23"
+	"AutoEncoder1D/ConvBlock[spatial_reduce]/ret.21" -> "AutoEncoder1D/ret.221"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.23" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/Conv2d[conv1d]/ret.25"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/Conv2d[conv1d]/ret.25" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.27"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.27" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.29"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.29" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/LayerNorm[norm]/ret.31"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/LayerNorm[norm]/ret.31" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.33"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.33" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/GELU[activation]/ret.35"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/GELU[activation]/ret.35" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37_swim_transpose_1"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.37_swim_transpose_1" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240_sink_transpose_1"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240_sink_transpose_1" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.39"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/MaxPool2d[downsample]/3240_sink_transpose_1" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.41"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[0]/ret.39" -> "AutoEncoder1D/ret.199"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.41" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/Conv2d[conv1d]/ret.43"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/Conv2d[conv1d]/ret.43" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.45"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.45" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.47"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.47" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/LayerNorm[norm]/ret.49"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/LayerNorm[norm]/ret.49" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.51"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.51" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/GELU[activation]/ret.53"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/GELU[activation]/ret.53" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55_swim_transpose_2"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.55_swim_transpose_2" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299_sink_transpose_2"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299_sink_transpose_2" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.57"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/MaxPool2d[downsample]/3299_sink_transpose_2" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.59"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[1]/ret.57" -> "AutoEncoder1D/ret.177"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.59" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/Conv2d[conv1d]/ret.61"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/Conv2d[conv1d]/ret.61" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.63"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.63" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.65"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.65" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/LayerNorm[norm]/ret.67"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/LayerNorm[norm]/ret.67" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.69"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.69" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/GELU[activation]/ret.71"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/GELU[activation]/ret.71" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73_swim_transpose_3"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.73_swim_transpose_3" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358_sink_transpose_3"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358_sink_transpose_3" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.75"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/MaxPool2d[downsample]/3358_sink_transpose_3" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.77"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[2]/ret.75" -> "AutoEncoder1D/ret.155"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.77" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/Conv2d[conv1d]/ret.79"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/Conv2d[conv1d]/ret.79" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.81"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.81" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.83"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.83" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/LayerNorm[norm]/ret.85"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/LayerNorm[norm]/ret.85" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.87"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.87" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/GELU[activation]/ret.89"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/GELU[activation]/ret.89" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91_swim_transpose_4"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.91_swim_transpose_4" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417_sink_transpose_4"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417_sink_transpose_4" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.93"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/MaxPool2d[downsample]/3417_sink_transpose_4" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.95"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[3]/ret.93" -> "AutoEncoder1D/ret.133"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.95" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/Conv2d[conv1d]/ret.97"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/Conv2d[conv1d]/ret.97" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.99"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.99" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.101"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.101" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/LayerNorm[norm]/ret.103"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/LayerNorm[norm]/ret.103" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.105"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.105" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/GELU[activation]/ret.107"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/GELU[activation]/ret.107" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109_swim_transpose_5"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/ret.109_swim_transpose_5" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476" -> "AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476_sink_transpose_5"
+	"AutoEncoder1D/ConvBlock[downsample_blocks]/ModuleList[4]/MaxPool2d[downsample]/3476_sink_transpose_5" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.113"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.113" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.115"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.115" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.117"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.117" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.119"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.119" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/LayerNorm[norm]/ret.121"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/LayerNorm[norm]/ret.121" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.123"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.123" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/GELU[activation]/ret.125"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/GELU[activation]/ret.125" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127_swim_transpose_6"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.127_swim_transpose_6" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535_sink_transpose_6"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/MaxPool2d[downsample]/3535_sink_transpose_6" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.129"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/ConvBlock[conv_block]/ret.129" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/Upsample[upsample]/ret.131"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[0]/Upsample[upsample]/ret.131" -> "AutoEncoder1D/ret.133"
+	"AutoEncoder1D/ret.133" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.135"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.135" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.137"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.137" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.139"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.139" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.141"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.141" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/LayerNorm[norm]/ret.143"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/LayerNorm[norm]/ret.143" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.145"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.145" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/GELU[activation]/ret.147"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/GELU[activation]/ret.147" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149_swim_transpose_7"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.149_swim_transpose_7" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604_sink_transpose_7"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/MaxPool2d[downsample]/3604_sink_transpose_7" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.151"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/ConvBlock[conv_block]/ret.151" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/Upsample[upsample]/ret.153"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[1]/Upsample[upsample]/ret.153" -> "AutoEncoder1D/ret.155"
+	"AutoEncoder1D/ret.155" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.157"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.157" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.159"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.159" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.161"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.161" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.163"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.163" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/LayerNorm[norm]/ret.165"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/LayerNorm[norm]/ret.165" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.167"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.167" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/GELU[activation]/ret.169"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/GELU[activation]/ret.169" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171_swim_transpose_8"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.171_swim_transpose_8" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673_sink_transpose_8"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/MaxPool2d[downsample]/3673_sink_transpose_8" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.173"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/ConvBlock[conv_block]/ret.173" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/Upsample[upsample]/ret.175"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[2]/Upsample[upsample]/ret.175" -> "AutoEncoder1D/ret.177"
+	"AutoEncoder1D/ret.177" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.179"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.179" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.181"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.181" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.183"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.183" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.185"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.185" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/LayerNorm[norm]/ret.187"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/LayerNorm[norm]/ret.187" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.189"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.189" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/GELU[activation]/ret.191"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/GELU[activation]/ret.191" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193_swim_transpose_9"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.193_swim_transpose_9" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742_sink_transpose_9"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/MaxPool2d[downsample]/3742_sink_transpose_9" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.195"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/ConvBlock[conv_block]/ret.195" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/Upsample[upsample]/ret.197"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[3]/Upsample[upsample]/ret.197" -> "AutoEncoder1D/ret.199"
+	"AutoEncoder1D/ret.199" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.201"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.201" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.203"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/Conv2d[conv1d]/ret.203" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.205"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.205" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.207"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.207" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/LayerNorm[norm]/ret.209"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/LayerNorm[norm]/ret.209" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.211"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.211" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/GELU[activation]/ret.213"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/GELU[activation]/ret.213" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215_swim_transpose_10"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.215_swim_transpose_10" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811_sink_transpose_10"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/MaxPool2d[downsample]/3811_sink_transpose_10" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.217"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/ConvBlock[conv_block]/ret.217" -> "AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/Upsample[upsample]/ret.219"
+	"AutoEncoder1D/UpConvBlock[upsample_blocks]/ModuleList[4]/Upsample[upsample]/ret.219" -> "AutoEncoder1D/ret.221"
+	"AutoEncoder1D/ret.221" -> "AutoEncoder1D/ret.223"
+	"AutoEncoder1D/ret.223" -> "AutoEncoder1D/Conv2d[conv1x1_one]/ret.225"
+	"AutoEncoder1D/Conv2d[conv1x1_one]/ret.225" -> "AutoEncoder1D/ret"
+	"AutoEncoder1D/ret" -> return_0
+}
